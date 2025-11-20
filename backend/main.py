@@ -4,10 +4,14 @@ from database.db import engine
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
+
 from dotenv import load_dotenv
 import openai
+from models.schemas_models import Users
+
 
 load_dotenv()
+from apis import openapi, weather_report, auth_api
 app = FastAPI()
 
 # CORS middleware (must be before include_router)
@@ -27,9 +31,11 @@ async def validation_exception_handler(request, exc):
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         content={"message": ", ".join(errors)},
     )
+    
 #  Include routers
-#app.include_router(login_route.router)
-
+app.include_router(openapi.router)
+app.include_router(weather_report.router)
+app.include_router(auth_api.router)
 
 #  Create tables on startup
 @app.on_event("startup")

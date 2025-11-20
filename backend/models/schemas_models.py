@@ -22,6 +22,7 @@ class UserInput(SQLModel):
              else:
                     return p   
 
+
 class Users(SQLModel, table = True):                
             
       id : int = Field(default = None,primary_key = True) 

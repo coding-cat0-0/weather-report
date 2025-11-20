@@ -3,13 +3,15 @@ from sqlmodel import select, Session
 from models.schemas_models import UserInput, Users
 from database.db import get_session
 from auth.jwt_hashing import get_current_user
-import openai
+from openai import OpenAI
 import httpx
 import os
+from typing import Optional
 
 router = APIRouter()
 
 API_KEY = os.getenv('OPW_KEY')
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 @router.get('/weather_report')
 async def report(lat : float, long : float,
@@ -18,8 +20,11 @@ async def report(lat : float, long : float,
     
     current = await get_weather_report(lat, long)    
     weather_report = parse_current_weather(current)
+    summarise = get_ai_summary(weather_report)
 
-    return {"Weather Report" : weather_report}
+    return {"Weather Report" : weather_report,
+            "Summary" : summarise
+            }
 
 
 @router.get('/get_disasters')
@@ -31,9 +36,11 @@ async def get_disasters(current_user = Depends(get_current_user(required_role='u
 
         disasters = [parse_nasa_event(event) for event in dis['events']]
         earthquake = [parse_usgs(feature) for feature in earth['features']]
+        summarise = get_ai_summary(disasters, earthquake)
 
         return {"Earthquakes" : earthquake[:20],
-                "Disasters" : disasters[:20]
+                "Disasters" : disasters[:20],
+                "Summary" : summarise
                 }
  
     
@@ -98,4 +105,28 @@ def parse_current_weather(data):
     }     
     
     
+# Open AI summary
+
+async def get_ai_summary(weather : Optional[str],     disaster : Optional[str]
+    ,earthquakes : Optional[str]):
+    
+    data = {
+        "weather" : weather,
+        "disaster" : disaster,
+        "earthquakes" : earthquakes
+        }
+    filtered_data = {k:v for k, v in data.items() if v is not None}
+    
+    prompt = "Summarise the following data into short yet detailed report : "
+    for key, value in filtered_data.items():
+        prompt += f"{key.capitalize()} : {value}"
         
+    response = client.chat.completions.create(
+        model="gpt-5-chat-latest",
+        messages = [
+            {'role':'system', 'content' : 'You are an AI that summarizes weather, disaster, and earthquake data and create a short yet detailed report'},
+            {'role':'user', 'content' : prompt}
+            ]
+    )
+    
+    return response.choice[0].message['content']

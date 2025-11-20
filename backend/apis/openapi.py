@@ -5,13 +5,12 @@ from database.db import get_session
 from auth.jwt_hashing import get_current_user
 import os
 from openai import OpenAI
+import dotenv
 
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-router = APIRouter(
-    tags='AI'
-)
+router = APIRouter()
 
 @router.post('/chatbox')
 async def ai_chatbox(
@@ -20,7 +19,7 @@ async def ai_chatbox(
     session:Session=Depends(get_session)):
     
     res =client.chat.completion.create(
-        model = "gpt-5",
+        model = "gpt-5-chat-latest",
         messages =[
             {"role": 'user', 'content' : message}
         ]

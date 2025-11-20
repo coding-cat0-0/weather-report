@@ -1,14 +1,14 @@
 from datetime import datetime, timedelta,timedelta, timezone
 from typing import Optional, Dict, Annotated
 from decouple import config
-from models import Users
+from models.schemas_models import Users
 from fastapi import Depends, HTTPException, status
 from jose import JWTError, jwt
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlmodel import Session, select
 import bcrypt
 from passlib.context import CryptContext
-from database import get_session
+from database.db import get_session
 
 pwd = CryptContext(schemes = ['bcrypt'], deprecated = 'auto')
 def hash_password(password : str):
