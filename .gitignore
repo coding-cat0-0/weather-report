@@ -1,2 +1,9 @@
 *.env
+*.sqlite
+*.sqlite3
+*.db
+*.db3
 
+# Python specific ignores
+__pycache__/
+*.pyc
