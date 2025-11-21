@@ -6,7 +6,6 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from dotenv import load_dotenv
-import openai
 from models.schemas_models import Users
 
 
