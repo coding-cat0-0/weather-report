@@ -1,0 +1,62 @@
+
+@font-face {
+  font-family: "Open Sauce Two";
+  src: url("/assets/fonts/OpenSauceTwo-ExtraBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sauce Two";
+  src: url("/assets/fonts/OpenSauceTwo-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+.background-image {
+  background-image: url("https://images-assets.nasa.gov/image/iss008e19646/iss008e19646~orig.jpg");
+  background-size: 100%;
+  background-position: top-center;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+app-root {
+  display: block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: "Open Sauce Two", sans-serif;
+}
+
+.bg-blur {
+  filter: blur(8px) brightness(0.7);
+}
+
+/* Optional frosted glass overlay */
+.glass-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.06);
+  z-index: -1;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

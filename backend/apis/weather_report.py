@@ -92,6 +92,7 @@ async def get_weather_report(lat : float, long : float):
         return  response.json()
 
 async def get_global_report():
+    #timeout = httpx.Timeout(connect=10, read=60)
     url = "https://eonet.gsfc.nasa.gov/api/v3/events"
     async with httpx.AsyncClient(timeout=30.0) as client:
         response = await client.get(url)

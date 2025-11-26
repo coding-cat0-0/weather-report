@@ -1,0 +1,32 @@
+.home {
+  text-align: center;
+  position: relative;
+  top: 40vh;
+  color: white;
+  transition: transform 0.8s ease-in-out;
+}
+
+.home h1 {
+  font-size: 6rem;
+  margin-bottom: 20px;
+}
+
+.home h2 {
+    margin-top: 10px;
+  font-size: 3rem;
+}
+
+.home.slide-up {
+  transform: translateY(-100%);
+}
+
+/* Make H2 look clickable */
+.clickable-text {
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.clickable-text:hover {
+  transform: scale(1.05);
+}
