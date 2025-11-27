@@ -1,1 +1,11 @@
-<p>signin works!</p>
+<div class="signin-container" id="signin">
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+        <h2>Signin here</h2>
+        <div class="form-fields">
+            <input type="email" name="email" [(ngModel)]="email" class="form-input-email" placeholder="Email" required>
+            <input type="password" name="password" [(ngModel)]="password" class="form-input-password" placeholder="Password" required>
+            <button class="btn form btn" type="submit">Sign In</button>
+            <p (click)="onClick()">Don't have an account?</p>
+            </div>
+    </form>
+</div>

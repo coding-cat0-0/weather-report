@@ -1,23 +1,35 @@
 .home {
   text-align: center;
   position: relative;
-  top: 40vh;
+  height: 100vh;
   color: white;
-  transition: transform 0.8s ease-in-out;
+  will-change: transform;
+  backface-visibility: hidden;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform .5s ease-in-out;
 }
-
+body.no-scroll {
+  overflow: hidden;
+}
 .home h1 {
+  font-family: "Open Sauce Two", sans-serif;
+  font-weight: 800;
   font-size: 6rem;
-  margin-bottom: 20px;
+  margin-top: 420px;
 }
 
 .home h2 {
-    margin-top: 10px;
-  font-size: 3rem;
+  margin-top: 40px;
+  font-family: "Open Sauce Two", sans-serif;
+  font-weight: 800;
+  font-size: 3.5rem;
 }
 
 .home.slide-up {
-  transform: translateY(-100%);
+ transform: translateY(-100%);
 }
 
 /* Make H2 look clickable */

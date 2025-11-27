@@ -1,0 +1,128 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Glass Effect Container */
+.signin-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 4rem 4.5rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 30%;
+  transition: transform 0.25s ease-in-out;
+}
+
+.signin-container:hover {
+  transform: scale(1.03);
+}
+
+.signin-container h2 {
+  font-family: "Open Sauce Two", sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.signin-container input {
+  margin-top: 20px;
+  margin-left: -20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 65px;
+  width: 270px;
+  background: rgba(88, 87, 87, 0.35);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 1.1rem;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+/* Placeholder */
+.signin-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+.signin-container input:focus {
+  border: 1px solid #72A7FF; /* Sierra Blue */
+  box-shadow: 0 0 8px #72A7FF;
+  color:  rgba(255, 255, 255, 0.7);;
+  outline: none;
+}
+
+.signin-container input:hover {
+  transform: scale(1.07);
+    box-shadow: 0 0 8px #72A7FF;
+}
+
+.signin-container input:-webkit-autofill,
+.signin-container input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.35) inset !important;
+  -webkit-text-fill-color: var(--text-color) !important;
+  border-radius: 10px;
+}
+
+
+.signin-container button {
+  width: 63%;
+  background: #3A82FF;
+  color:white;
+  border: none;
+  border-radius: 20px;
+  padding: 1rem;
+  font-size: 1.15rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: 0.25s ease;
+}
+
+/* Button Hover Glow */
+.signin-container button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 10px #72A7FF;
+}
+.signin-container p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2rem;
+  cursor: pointer;
+  transition: text-shadow 0.2s ease, color 0.2s ease;
+}
+
+.signin-container p:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #72A7FF, 0 0 20px #72A7FF, 0 0 30px #72A7FF;
+}

@@ -1,0 +1,147 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+
+
+body {
+  font-family: var(--font);
+  color: var(--text-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.signup-container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 4rem 4.5rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 20%;
+  height: 65vh;
+  transition: transform 0.25s ease-in-out;
+}
+/* The actual box */
+.form-container {
+  background-color: #181a1f;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+/* Small scale effect on hover */
+.signup-container:hover {
+  transform: scale(1.03);
+}
+
+.signup-container .form{
+    /* Stack fields and helper text vertically inside the overlay */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.signup-container h2 {
+  font-family: "Open Sauce Two", sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+
+/*Input boxes*/
+.signup-container input {
+  margin-top: 20px;
+  margin-left: -20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 65px;
+  width: 270px;
+  background: rgba(88, 87, 87, 0.35);
+  border: 1px solid transparent;
+  border-radius: 20px;
+  padding: 1.1rem;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.signup-container input:-webkit-autofill,
+.signup-container input:-webkit-autofill:hover,
+.signup-container input:-webkit-autofill:focus,
+.signup-container input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.35) inset !important;
+  -webkit-text-fill-color: var(--text-color) !important;
+  border-radius: 10px;
+}
+
+
+/* Lighter gray placeholders */
+.signup-container input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+.signup-container input:focus {
+  border: 1px solid #72A7FF; /* Sierra Blue */
+  box-shadow: 0 0 8px #72A7FF;
+  color:  rgba(255, 255, 255, 0.7);;
+  outline: none;
+}
+.signup-container input:hover{
+      transform: scale(1.07);
+    box-shadow: 0 0 8px #72A7FF;
+}
+
+/* signup button */
+.signup-container button {
+  background-color: #6633ee;
+  color: var(  --btn-text-color);
+  width: 63%;
+  background: #3A82FF;
+  color:white;
+  margin-left: 40px;
+  border: none;
+  border-radius: 20px;
+  padding: 1rem;
+  font-size: 1.15rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 2rem;
+  transition: 0.25s ease;
+}
+
+/* On hover, darken the button */
+.signup-container button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 10px #72A7FF;
+}
+
+/*message box */
+#message {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  color: white;
+}

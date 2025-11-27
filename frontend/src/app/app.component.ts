@@ -6,6 +6,9 @@ import { HomeComponent } from './home/home.component';
 import { Router, NavigationEnd } from '@angular/router';
 import { Renderer2, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AfterViewInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,27 +17,34 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   constructor(
     private router: Router,
     private renderer: Renderer2,
+    @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(DOCUMENT) private document: Document
-  ){
-this.router.events.subscribe((event) => {
-  if (event instanceof NavigationEnd) {
-    const isHome = event.urlAfterRedirects === '' || event.urlAfterRedirects === '/home';
-    const bg = document.querySelector('.background-image');
-    const glassOverlay = document.querySelector('.glass-overlay');
-    if (bg && glassOverlay) {
-      if (isHome) {
-        this.renderer.removeClass(bg,'bg-blur');
-        this.renderer.addClass(glassOverlay,'hidden');
-      } else{
-        this.renderer.addClass(bg,'bg-blur');
-        this.renderer.removeClass(glassOverlay,'hidden');
+  ) { }
+  ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const bg = this.document.querySelector('.background-image');
+    const glassOverlay = this.document.querySelector('.glass-overlay');
+
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        const isHome = event.urlAfterRedirects === '/' || event.urlAfterRedirects === '/home';
+
+        if (bg && glassOverlay) {
+          if (isHome) {
+            this.renderer.removeClass(bg, 'bg-blur');
+            this.renderer.addClass(glassOverlay, 'hidden');
+            this.renderer.setStyle(this.document.body, 'font-weight', '800');
+          } else {
+            this.renderer.addClass(bg, 'bg-blur');
+            this.renderer.removeClass(glassOverlay, 'hidden');
+            this.renderer.setStyle(this.document.body, 'font-weight', '600');
+          }
+        }
       }
-    }
+    });
   }
-});
-}
 }

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthService } from "../services/auth_service";
 
 @Component({
   selector: 'app-signin',
@@ -16,7 +17,7 @@ email = '';
 password = '';
 
 constructor(private snackBar: MatSnackBar, private http : HttpClient,
-private router: Router) {}
+private router: Router,  private authService : AuthService) {}
 
   openPopup(message: string) {  
      console.log("POPUP TRIGGERED:", message);
@@ -69,4 +70,7 @@ onSubmit() {
       }
     })
   }
+onClick(){
+    this.router.navigate(['/signup']);
+}  
 }

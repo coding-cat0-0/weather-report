@@ -19,7 +19,11 @@ constructor(private router : Router){}
     // Wait for animation to complete, then navigate
     setTimeout(() => {
       this.router.navigate(['/signin']);
-    }, 700); // matches CSS animation time
+    }, 250); // matches CSS animation time
+
+
+
+
   }
 
 }
