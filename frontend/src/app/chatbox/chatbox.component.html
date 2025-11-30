@@ -1,0 +1,15 @@
+<div class="chat-container">
+    <h2>Weather Ai</h2>
+    <div class="chat-messages">
+        <div *ngFor="let msg of messages" [ngClass]="msg.role" class="message-bubble">
+            {{msg.text}}
+        </div>
+    </div>
+    <form (ngSubmit)="onSubmit()" #chatbox="ngForm">
+        
+        <div class="form-fields">
+            <input type="message" name="message" [(ngModel)]="messageInput" class="type-msg" placeholder="Ask about report" required>
+            <button class="btn form btn" type="submit">Send</button>
+            </div>
+    </form>
+</div>

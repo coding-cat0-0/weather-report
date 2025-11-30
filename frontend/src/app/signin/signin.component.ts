@@ -57,7 +57,7 @@ onSubmit() {
         this.authService.setToken(token);
         console.log("Token saved", token)
         this.openPopup(response.message);
-        this.router.navigate(['/create_note']);
+        this.router.navigate(['/weather_report']);
 
        } else{
         console.warn('No token generated');
