@@ -1,19 +1,40 @@
 .weather-dashbord {
-    display: flex;
-    justify-content: space-between; /* left + right positioning */
-    align-items: center; /* vertical alignment */
-    width: 100%;
-    height: 100vh; /* Full screen height */
-    padding: 20px; /* Space from screen edges */
-    box-sizing: border-box;
-}
-app-disaster-alerts {
-    width: 45%;
-    margin-left: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 30px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 40px 60px;
+  align-items: start;
 }
 
-app-chatbox {
-    margin-top: 100px;
-    width: 30%;
-    margin-right: 10px;
+.animate-block {
+  width: 100%;
+  max-width: 600px;
+  min-height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.first-block {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.second-block {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.third-block {
+  grid-column: 2 / span 1;
+  grid-row: 1 / span 2;
+  justify-self: end;
+}
+
+.animate-block:hover {
+  transform: scale(1.05);
 }

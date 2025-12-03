@@ -1,0 +1,93 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100vh;
+  padding-top: 50px;
+}
+
+/* Glass Effect Container */
+.container {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 1.5rem 2rem;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  width: 90%;
+  max-width: 800px;
+  transition: 0.25s ease-in-out;
+}
+
+.container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Header Row */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h3 {
+  margin-top: 10px;
+  font-family: "Open Sauce Two", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+}
+
+.header button {
+  background: #3A82FF;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-family: "Open Sauce Two", sans-serif;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  height: 50px;
+  width: 90px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.25s ease-in-out;
+}
+
+.header button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 10px #72A7FF;
+}
+
+/* Expandable section */
+.content {
+  margin-top: 1.5rem;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.content h4 {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+}
+
+.content p {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.8rem;
+  padding-left: 10px;
+  border-left: 3px solid #72A7FF;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

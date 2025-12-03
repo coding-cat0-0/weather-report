@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './disaster-alerts.component.css'
 })
 export class DisasterAlertsComponent {
-weatherApi = 'http://localhost:9000/weather_report';
+
 disasterApi ='http://localhost:9000/get_disaster';
 earthquakes:any[]=[];
 disasters:any[]=[];
