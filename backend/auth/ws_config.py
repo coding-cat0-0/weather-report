@@ -50,3 +50,5 @@ async def get_current_ws(
     if required_role and user.role != required_role:
         print('role mismatch')
         return await close()
+
+    return user

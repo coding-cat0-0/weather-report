@@ -26,13 +26,14 @@ body {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  padding: 3rem 2.8rem;
+  padding: 2.6rem 2.6rem;
   border-radius: 15px;
   border: 1px solid rgba(255,255,255,0.25);
   box-shadow: 0 8px 32px rgba(0,0,0,0.35);
   width: 100%;
   max-width: 480px;
-  height: 550px;
+  /* Slightly smaller height so the chat box feels lighter */
+  height: 520px;
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -41,7 +42,7 @@ body {
 }
 
 .chat-container:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 .chat-container h2 {

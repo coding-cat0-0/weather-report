@@ -1,38 +1,53 @@
 .weather-dashbord {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  /* Left column a bit wider than right */
+  grid-template-columns: 3fr 2fr;
   grid-template-rows: auto auto;
-  gap: 30px;
+  grid-template-areas:
+    "first third"
+    "second third";
+  /* Consistent spacing: small vertical gap, roomy horizontal gap */
+  column-gap: 10px;
+  row-gap: 12px;
   width: 100%;
-  min-height: 100vh;
-  padding: 40px 60px;
+  /* Let height be dictated by content and keep rows near the top */
+  padding: 70px 60px 40px;
   align-items: start;
+  align-content: start;
 }
 
 .animate-block {
   width: 100%;
-  max-width: 600px;
-  min-height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* Make blocks a bit longer/wider and remove the tight cap */
+  max-width: none;
+  min-height: 200px;
   transition: transform 0.3s ease;
 }
 
 .first-block {
-  grid-column: 1;
-  justify-self: start;
+  /* Push the first block down a bit; gap to second is handled by row-gap */
+  margin: 100px 0 0 0;
+  width: 80%;
+  grid-area: first;
+  justify-self: stretch;
 }
 
 .second-block {
-  grid-column: 1;
-  justify-self: start;
+  /* No huge margins: spacing comes from grid row-gap only */
+  width: 80%;
+  margin: 0 0 350px 0; 
+  grid-area: second;
+  justify-self: stretch;
 }
 
 .third-block {
-  grid-column: 2 / span 1;
-  grid-row: 1 / span 2;
+  /* Position chat box on the right; independent of left column margins */
+  grid-area: third;
   justify-self: end;
+  /* Anchor near the top so it doesn't drift when left column changes */
+  align-self: start;
+  /* Gentle inset from top/right/bottom */
+  margin: 100px 60px 200px 0; /* top, right, bottom, left */
 }
 
 .animate-block:hover {

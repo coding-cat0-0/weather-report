@@ -1,9 +1,10 @@
 :host {
   display: flex;
   justify-content: center;
-  align-items: start;
-  height: 100vh;
-  padding-top: 50px;
+  align-items: flex-start;
+  /* Host height should follow content so this block doesn't push others off-screen */
+  height: auto;
+  padding-top: 0;
 }
 
 /* Glass Effect Container */
@@ -15,13 +16,17 @@
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
-  width: 90%;
-  max-width: 800px;
+  /* Make this card fill the entire left grid column, same as first block */
+  width: 100%;
+  max-width: none;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
   transition: 0.25s ease-in-out;
 }
 
 .container:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
@@ -41,7 +46,15 @@
   cursor: pointer;
 }
 
-.header button {
+/* Button container at bottom */
+.button-container {
+  margin-top: auto;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-container button {
   background: #3A82FF;
   color: white;
   border: none;
@@ -56,9 +69,33 @@
   transition: 0.25s ease-in-out;
 }
 
-.header button:hover {
+.button-container button:hover {
   transform: scale(1.07);
   box-shadow: 0 0 10px #72A7FF;
+}
+
+/* Preview section */
+.preview {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.preview-text {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  font-family: "Open Sauce Two", sans-serif;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.preview-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 /* Expandable section */
@@ -77,6 +114,18 @@
   margin-bottom: 0.8rem;
   padding-left: 10px;
   border-left: 3px solid #72A7FF;
+}
+
+.weather-card {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border-left: 3px solid #72A7FF;
+}
+
+.weather-card p {
+  margin-bottom: 0.5rem;
 }
 
 /* Animation */

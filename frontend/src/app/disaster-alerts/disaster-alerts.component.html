@@ -1,9 +1,13 @@
 <div class="container">
     <div class="header">
         <h3>Global natural disasters report</h3>
-        <button (click)="onClick()">
-            {{ expanded ? 'Hide' : 'See'}}
-        </button>
+    </div>
+    <div class="preview">
+        <p class="preview-text">
+            <span class="preview-icon">🌍</span>
+            Fetches real-time global natural disasters from NASA and recent earthquakes from USGS. 
+            Includes detailed reports with locations, magnitudes, and an AI-generated summary of recent events worldwide.
+        </p>
     </div>
     <div *ngIf="expanded" class="content">
         <h4>Disaster Reports</h4>
@@ -20,5 +24,10 @@
         </div>
         <h4>Summary</h4>
         <p>{{summary}}</p>
+    </div>
+    <div class="button-container">
+        <button (click)="onClick()">
+            {{ expanded ? 'Hide' : 'See'}}
+        </button>
     </div>
 </div>

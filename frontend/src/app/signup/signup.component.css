@@ -26,7 +26,7 @@ body {
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  padding: 4rem 4.5rem;
+  padding: 3rem 4.5rem 4rem 4.5rem;
   border-radius: 15px;
   border: 1px solid rgba(255,255,255,0.25);
   box-shadow: 0 8px 32px rgba(0,0,0,0.35);
@@ -56,22 +56,23 @@ body {
     /* Stack fields and helper text vertically inside the overlay */
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     text-align: center;
 }
 
 .signup-container h2 {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
   font-family: "Open Sauce Two", sans-serif;
   color: rgba(255, 255, 255, 0.7);
   font-size: 1.8rem;
   font-weight: 800;
-  margin-bottom: 1.5rem;
 }
 
 
 /*Input boxes*/
 .signup-container input {
-  margin-top: 20px;
+  margin-top: 15px;
   margin-left: -20px;
   display: flex;
   flex-direction: column;

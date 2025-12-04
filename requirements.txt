@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+sqlmodel
+python-dotenv
+python-decouple
+python-jose
+aioredis
+redis
+groq
+httpx
+bcrypt
+passlib
+
+
+

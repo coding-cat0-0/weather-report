@@ -1,9 +1,13 @@
 <div class="container">
     <div class="header">
         <h3>Weekly weather report</h3>
-        <button (click)="getReport()">
-            {{ expanded ? 'Hide' : 'See'}}
-        </button>
+    </div>
+    <div class="preview">
+        <p class="preview-text">
+            <span class="preview-icon">🌤️</span>
+            Get a comprehensive 7-day weather forecast for any location using latitude and longitude coordinates. 
+            Includes daily temperature, humidity, wind speed, conditions, and an AI-generated weekly summary.
+        </p>
     </div>
     <div *ngIf="expanded" class="content">
         <h4>Weather Report</h4>
@@ -16,5 +20,10 @@
   </div>
         <h4>Summary</h4>
         <p>{{summary}}</p>
+    </div>
+    <div class="button-container">
+        <button (click)="getReport()">
+            {{ expanded ? 'Hide' : 'See'}}
+        </button>
     </div>
 </div>
