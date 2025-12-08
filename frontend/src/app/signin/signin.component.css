@@ -31,6 +31,7 @@ body {
   border: 1px solid rgba(255,255,255,0.25);
   box-shadow: 0 8px 32px rgba(0,0,0,0.35);
   width: 100%;
+  color: #ffffff;
   max-width: 380px;
   text-align: center;
   display: flex;
@@ -73,7 +74,7 @@ body {
   border-radius: 20px;
   padding: 1.1rem;
   font-size: 0.95rem;
-  color: var(--text-color);
+  color: white !important;
   transition: 0.3s ease;
   cursor: pointer;
 }
@@ -87,7 +88,7 @@ body {
 .signin-container input:focus {
   border: 1px solid #72A7FF; /* Sierra Blue */
   box-shadow: 0 0 8px #72A7FF;
-  color:  rgba(255, 255, 255, 0.7);;
+  color: white !important;
   outline: none;
 }
 
@@ -98,9 +99,9 @@ body {
 
 .signin-container input:-webkit-autofill,
 .signin-container input:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.35) inset !important;
-  -webkit-text-fill-color: var(--text-color) !important;
-  border-radius: 10px;
+  -webkit-box-shadow: 0 0 0 1000px rgba(88, 87, 87, 0.35) inset !important;
+  -webkit-text-fill-color: white !important;
+  border-radius: 20px !important;
 }
 
 
@@ -135,7 +136,47 @@ body {
   transition: text-shadow 0.2s ease, color 0.2s ease;
 }
 
+
+
 .signin-container p:hover {
   color: #ffffff;
   text-shadow: 0 0 10px #72A7FF, 0 0 20px #72A7FF, 0 0 30px #72A7FF;
+}
+
+/* Glassy Snackbar Styles for Signin */
+::ng-deep .neon-snackbar {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .neon-snackbar .mdc-snackbar__surface {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-radius: 25px !important;
+  padding: 1.1rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+  color: white !important;
+  font-family: 'Open Sauce Two', sans-serif !important;
+}
+
+::ng-deep .neon-snackbar .mat-mdc-snack-bar-label,
+::ng-deep .neon-snackbar .mdc-snackbar__label {
+  color: white !important;
+}
+
+::ng-deep .neon-snackbar .mat-mdc-button,
+::ng-deep .neon-snackbar .mat-mdc-snack-bar-action,
+::ng-deep .neon-snackbar .mdc-snackbar__action {
+
+  font-weight: bold !important;
+  color: #ffffff !important;
+  font-family: 'Open Sauce Two', sans-serif !important;
+}
+
+::ng-deep .neon-snackbar .mat-mdc-button .mdc-button__label,
+::ng-deep .neon-snackbar .mdc-snackbar__action .mdc-button__label {
+  color: #3A82FF !important;
 }

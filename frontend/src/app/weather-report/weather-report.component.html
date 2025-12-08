@@ -1,15 +1,33 @@
+<header>
+  <h1>Weather Report</h1>
+  <nav>
+    <ul>
+      <li><a href="">Home<span class="arrow">⌵</span></a></li>
+      <li><a href="">About<span class="arrow">⌵</span></a></li>
+      <li><a href="">Help<span class="arrow">⌵</span></a></li>
+      <li><a href="">Settings<span class="arrow">⌵</span></a></li>
+    </ul>
+  </nav>
+</header>
 <div class="weather-dashbord" @pageFadeSlide>
+  
 
-  <div class="animate-block first-block">
-    <app-disaster-alerts></app-disaster-alerts>
-  </div>
+  <div class="content-wrapper">
+    <div class="left-column">
+      <div class="animate-block first-block">
+        <app-disaster-alerts></app-disaster-alerts>
+      </div>
 
-  <div class="animate-block second-block">
-    <app-weather-alerts></app-weather-alerts>
-  </div>
+      <div class="animate-block second-block">
+        <app-weather-alerts></app-weather-alerts>
+      </div>
+    </div>
 
-  <div class="animate-block third-block">
-    <app-chatbox></app-chatbox>
+    <div class="right-column">
+      <div class="animate-block third-block">
+        <app-chatbox></app-chatbox>
+      </div>
+    </div>
   </div>
 
 </div>

@@ -68,3 +68,48 @@ body {
   opacity: 0;
   pointer-events: none;
 }
+
+/* Glassy Snackbar Styles */
+.snackbar,
+.neon-snackbar {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.snackbar .mdc-snackbar__surface,
+.neon-snackbar .mdc-snackbar__surface {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-radius: 25px !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+  color: white !important;
+  font-family: 'Open Sauce Two', sans-serif !important;
+}
+
+.snackbar .mat-mdc-snack-bar-label,
+.neon-snackbar .mat-mdc-snack-bar-label,
+.snackbar .mdc-snackbar__label,
+.neon-snackbar .mdc-snackbar__label {
+  color: white !important;
+}
+
+.snackbar .mat-mdc-button,
+.snackbar .mat-mdc-snack-bar-action,
+.snackbar .mdc-snackbar__action,
+.neon-snackbar .mat-mdc-button,
+.neon-snackbar .mat-mdc-snack-bar-action,
+.neon-snackbar .mdc-snackbar__action {
+  color: #3A82FF !important;
+  font-weight: bold !important;
+  font-family: 'Open Sauce Two', sans-serif !important;
+}
+
+.snackbar .mat-mdc-button .mdc-button__label,
+.snackbar .mdc-snackbar__action .mdc-button__label,
+.neon-snackbar .mat-mdc-button .mdc-button__label,
+.neon-snackbar .mdc-snackbar__action .mdc-button__label {
+  color: #3A82FF !important;
+}

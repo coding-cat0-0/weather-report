@@ -84,7 +84,7 @@ body {
   border-radius: 20px;
   padding: 1.1rem;
   font-size: 0.95rem;
-  color: var(--text-color);
+  color: white !important;
   transition: 0.3s ease;
   cursor: pointer;
 }
@@ -93,9 +93,9 @@ body {
 .signup-container input:-webkit-autofill:hover,
 .signup-container input:-webkit-autofill:focus,
 .signup-container input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0.35) inset !important;
-  -webkit-text-fill-color: var(--text-color) !important;
-  border-radius: 10px;
+  -webkit-box-shadow: 0 0 0 1000px rgba(88, 87, 87, 0.35) inset !important;
+  -webkit-text-fill-color: white !important;
+  border-radius: 20px !important;
 }
 
 
@@ -106,7 +106,7 @@ body {
 .signup-container input:focus {
   border: 1px solid #72A7FF; /* Sierra Blue */
   box-shadow: 0 0 8px #72A7FF;
-  color:  rgba(255, 255, 255, 0.7);;
+  color: white !important;
   outline: none;
 }
 .signup-container input:hover{
@@ -145,4 +145,41 @@ body {
   font-weight: 500;
   text-align: center;
   color: white;
+}
+
+/* Glassy Snackbar Styles for Signup */
+::ng-deep .snackbar {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+::ng-deep .snackbar .mdc-snackbar__surface {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  border-radius: 25px !important;
+  padding: 1.1rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+  color: white !important;
+  font-family: 'Open Sauce Two', sans-serif !important;
+}
+
+::ng-deep .snackbar .mat-mdc-snack-bar-label,
+::ng-deep .snackbar .mdc-snackbar__label {
+  color: white !important;
+}
+
+::ng-deep .snackbar .mat-mdc-button,
+::ng-deep .snackbar .mat-mdc-snack-bar-action,
+::ng-deep .snackbar .mdc-snackbar__action {
+  color: #3A82FF !important;
+  font-weight: bold !important;
+  font-family: 'Open Sauce Two', sans-serif !important;
+}
+
+::ng-deep .snackbar .mat-mdc-button .mdc-button__label,
+::ng-deep .snackbar .mdc-snackbar__action .mdc-button__label {
+  color: #3A82FF !important;
 }

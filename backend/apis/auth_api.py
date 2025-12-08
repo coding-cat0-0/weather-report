@@ -15,10 +15,16 @@ def signup(
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
                             detail = "Email already registered")
     
+    try:
+        hashed_password = hash_password(user.password)
+    except ValueError as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
+                            detail=str(e))
+    
     create = Users(
         name = user.name,
         email = user.email,
-        password = hash_password(user.password)
+        password = hashed_password
     )    
     
     session.add(create)

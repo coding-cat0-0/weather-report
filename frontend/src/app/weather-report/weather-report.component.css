@@ -1,53 +1,171 @@
-.weather-dashbord {
-  display: grid;
-  /* Left column a bit wider than right */
-  grid-template-columns: 3fr 2fr;
-  grid-template-rows: auto auto;
-  grid-template-areas:
-    "first third"
-    "second third";
-  /* Consistent spacing: small vertical gap, roomy horizontal gap */
-  column-gap: 10px;
-  row-gap: 12px;
+:host {
+  display: block;
+  position: relative;
   width: 100%;
-  /* Let height be dictated by content and keep rows near the top */
+  min-height: 100vh;
+  z-index: 1;
+  padding-top: 120px;
+}
+
+/* Glassy Header */
+header {
+  background: rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+  padding: 1.5rem 2rem !important;
+  border-radius: 0 !important;
+  border: 1px solid rgba(0, 119, 190, 0.4) !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
+  margin: 0 !important;
+  margin-top: 0 !important;
+  transition: 0.25s ease-in-out !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 100 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+header h1 {
+  margin: 0;
+  font-family: "Open Sauce Two", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+header h1:hover {
+  transform: scale(1.01);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation inside header */
+header nav {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-right: 690px !important;
+  position: static !important;
+  display: block !important;
+  width: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin: 0;
+}
+
+nav ul li a {
+  font-family: "Open Sauce Two", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: 0.25s ease-in-out;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav ul li a .arrow {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.3s ease-in-out;
+  transform: rotate(0deg);
+}
+
+nav ul li a:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 4px #72A7FF, 0 0 8px #72A7FF;
+}
+
+nav ul li a:hover .arrow {
+  transform: rotate(180deg);
+}
+
+
+.weather-dashbord {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   padding: 70px 60px 40px;
-  align-items: start;
-  align-content: start;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.header-section {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  gap: 24px;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
 }
 
 .animate-block {
   width: 100%;
-  /* Make blocks a bit longer/wider and remove the tight cap */
-  max-width: none;
   min-height: 200px;
   transition: transform 0.3s ease;
 }
 
 .first-block {
-  /* Push the first block down a bit; gap to second is handled by row-gap */
-  margin: 100px 0 0 0;
-  width: 80%;
-  grid-area: first;
-  justify-self: stretch;
+  margin-top: -13px;
+  width: 100%;
 }
 
 .second-block {
-  /* No huge margins: spacing comes from grid row-gap only */
-  width: 80%;
-  margin: 0 0 350px 0; 
-  grid-area: second;
-  justify-self: stretch;
+  width: 100%;
+  margin-bottom: 350px;
 }
 
 .third-block {
-  /* Position chat box on the right; independent of left column margins */
-  grid-area: third;
-  justify-self: end;
-  /* Anchor near the top so it doesn't drift when left column changes */
-  align-self: start;
-  /* Gentle inset from top/right/bottom */
-  margin: 100px 60px 200px 0; /* top, right, bottom, left */
+  margin-top: -50px;
+  width: 100%;
+  margin-right: 60px;
 }
 
 .animate-block:hover {
