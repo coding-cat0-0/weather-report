@@ -9,7 +9,9 @@ router = APIRouter()
 @router.post('/signup')
 def signup(
     user : UserInput, session : Session = Depends(get_session)):
-    
+    user.name = user.name.strip()
+    user.email = user.email.strip()
+    user.password = user.password.strip()
     query = session.exec(select(Users).where(Users.email == user.email)).first()
     if query:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,

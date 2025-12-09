@@ -27,6 +27,7 @@ OnPopup(message:string){
 onSubmit(){
     const emailRegex = /\w+@(\w+\.)?\w+\.(com)$/i;
   const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%&*^_-])[A-Za-z\d!@#$%^&_*-]{8,}$/;
+  
   if(!this.name || !this.email || !this.password){
     this.OnPopup('All fields are required!');
   }

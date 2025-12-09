@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+sqlmodel
+python-dotenv
+python-decouple
+python-jose
+passlib[argon2]
+argon2-cffi
+aioredis
+redis
+httpx
+groq

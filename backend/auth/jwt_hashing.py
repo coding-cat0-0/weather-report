@@ -6,16 +6,19 @@ from fastapi import Depends, HTTPException, status
 from jose import JWTError, jwt
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlmodel import Session, select
-import bcrypt
 from passlib.context import CryptContext
 from database.db import get_session
 
-pwd = CryptContext(schemes = ['bcrypt'], deprecated = 'auto')
-def hash_password(password : str):
-    return pwd.hash(password)
+pwd = CryptContext(
+    schemes=["argon2"],
+    deprecated="auto"
+)
 
-def check_hashed_password(plain_pass : str, hashed_pass : str):
-    return pwd.verify(plain_pass, hashed_pass)
+def hash_password(password: str):
+    return pwd.hash(password.strip())
+
+def check_hashed_password(plain_pass: str, hashed_pass: str):
+    return pwd.verify(plain_pass.strip(), hashed_pass)
 
 SECRET_KEY: str = config('SECRET_KEY', cast=str, default='secret')
 ALGORITHM: str = config('ALGORITHM', cast=str, default='HS256')
