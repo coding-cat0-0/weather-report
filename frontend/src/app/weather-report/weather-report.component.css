@@ -9,7 +9,7 @@
 
 /* Glassy Header */
 header {
-  background: rgba(255, 255, 255, 0.12) !important;
+  background: rgba(70, 70, 70, 0.22);
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
   padding: 1.5rem 2rem !important;
@@ -46,10 +46,7 @@ header h1 {
   cursor: pointer;
 }
 
-header h1:hover {
-  transform: scale(1.01);
-  text-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
-}
+
 
 /* Navigation inside header */
 header nav {

@@ -23,7 +23,7 @@ constructor(private http:HttpClient){}
 
     this.http.get(url).subscribe({
       next: (res: any) => {
-        this.report = res["Weekly Weather Report"] || [];
+        this.report = res["Weather Report"] || [];
         this.summary = res["Summary"] || "";
         this.expanded = !this.expanded;
         console.log("Weather API Response:", res);
