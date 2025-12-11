@@ -6,7 +6,7 @@ from auth.jwt_hashing import get_current_user
 from groq import Groq
 import httpx
 import os
-from typing import Optional
+from typing import Optional, Any
 import json
 from redis_client import redis
 import asyncio
@@ -16,18 +16,48 @@ API_KEY = os.getenv('OPW_KEY')
 from redis_client import redis
 
 
+
 @router.get('/weather_report')
-async def report(lat : float, long : float,
-           current_user = Depends(get_current_user(required_role='user')),
-           session : Session = Depends(get_session)):
-    
-    current = await get_weather_report(lat, long)    
+async def report(
+    lat: float,
+    long: float,
+    current_user = Depends(get_current_user(required_role='user')),
+    session: Session = Depends(get_session)
+):
+
+    # Validate coordinates
+    if lat == 0 and long == 0:
+        raise HTTPException(
+            status_code=400,
+            detail="Invalid coordinates. Please choose a real location."
+        )
+
+    # Fetch weather data
+    current = await get_weather_report(lat, long)
+
+    if not current:
+        raise HTTPException(
+            status_code=502,
+            detail="Weather data provider returned no response."
+        )
+
+    # Parse safely
     weather_report = parse_weather_report(current)
+
+    # If API lacked necessary data
+    if isinstance(weather_report, dict) and "error" in weather_report:
+        raise HTTPException(
+            status_code=502,
+            detail=f"Weather service error: {weather_report['error']}"
+        )
+
+    # Generate AI summary
     summarise = await get_ai_summary(weather_report)
 
-    return {"Weather Report" : weather_report,
-            "Summary" : summarise
-            }
+    return {
+        "Weather Report": weather_report,
+        "Summary": summarise
+    }
 
 
 
@@ -86,10 +116,24 @@ async def get_disasters(
     
 # Calling external API's
 async def get_weather_report(lat: float, long: float):
-    url = f"https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={long}&exclude=minutely,current,alerts&appid={API_KEY}&units=metric"
-    async with httpx.AsyncClient() as client:
+    url = (
+        "https://api.openweathermap.org/data/3.0/onecall"
+        f"?lat={lat}&lon={long}"
+        "&exclude=minutely,hourly,alerts"  
+        f"&appid={API_KEY}&units=metric"
+    )
+
+    async with httpx.AsyncClient(timeout=30.0) as client:
         response = await client.get(url)
-        return response.json()
+        data = response.json()
+
+        if "daily" not in data:
+            return {"error": "Daily forecast not available", "raw": data}
+
+        data["daily"] = data["daily"][:7]
+
+        return data
+
 
 
 async def get_global_report():
@@ -130,29 +174,43 @@ def parse_nasa_event(event):
      
 def parse_weather_report(data):
 
+    # If API failed or returned no data
+    if not data:
+        return {
+            "error": "Weather API returned no data.",
+            "raw_response": data
+        }
+
+    # If the weather API does not include daily data
+    if "daily" not in data:
+        return {
+            "error": "'daily' data missing in weather API response.",
+            "raw_response": data
+        }
+
     daily_forecast = []
 
     for day in data["daily"]:
         daily_forecast.append({
-            "date": day["dt"],
-            "temperature_day": day["temp"]["day"],
-            "temperature_night": day["temp"]["night"],
-            "min_temp": day["temp"]["min"],
-            "max_temp": day["temp"]["max"],
-            "humidity": day["humidity"],
-            "wind_speed": day["wind_speed"],
-            "clouds": day["clouds"],
-            "description": day["weather"][0]["description"],
-            "icon": day["weather"][0]["icon"]
+            "date": day.get("dt"),
+            "temperature_day": day.get("temp", {}).get("day"),
+            "temperature_night": day.get("temp", {}).get("night"),
+            "min_temp": day.get("temp", {}).get("min"),
+            "max_temp": day.get("temp", {}).get("max"),
+            "humidity": day.get("humidity"),
+            "wind_speed": day.get("wind_speed"),
+            "clouds": day.get("clouds"),
+            "description": day.get("weather", [{}])[0].get("description"),
+            "icon": day.get("weather", [{}])[0].get("icon")
         })
-  
-       
+
     return daily_forecast
+
     
     
 # Open AI summary
-async def get_ai_summary(weather : Optional[str]=None, disaster : Optional[str] = None
-    ,earthquakes : Optional[str] = None):
+async def get_ai_summary(weather : Optional[Any]=None, disaster : Optional[Any] = None
+    ,earthquakes : Optional[Any] = None):
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
     
     data = {

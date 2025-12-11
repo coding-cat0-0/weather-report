@@ -13,10 +13,9 @@ load_dotenv()
 from apis import openapi, weather_report, auth_api
 app = FastAPI()
 
-# CORS middleware (must be before include_router)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Or specify: ["http://127.0.0.1:5500"]
+    allow_origins=["http://localhost:4300"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

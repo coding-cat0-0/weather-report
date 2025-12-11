@@ -8,7 +8,7 @@ import { AuthService } from "../services/auth_service";
 @Component({
   selector: 'app-signin',
   standalone: true,
-  imports: [FormsModule,HttpClientModule, MatSnackBarModule,],
+  imports: [FormsModule, MatSnackBarModule,],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css'
 })
@@ -30,6 +30,8 @@ private router: Router,  private authService : AuthService) {}
   }
 
 onSubmit() {
+  const email = this.email.trim();
+  const password = this.password.trim();
   const emailRegex = /\w+@(\w+\.)?\w+\.(com)$/i;
   const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%&*^_-])[A-Za-z\d!@#$%^&_*-]{8,}$/;
 

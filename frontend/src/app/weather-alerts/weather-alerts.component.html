@@ -9,6 +9,17 @@
             Includes daily temperature, humidity, wind speed, conditions, and an AI-generated weekly summary.
         </p>
     </div>
+    <div class="input-section">
+        <div class="input-group">
+            <label>Latitude</label>
+            <input type="number" [(ngModel)]="latitude" placeholder="Enter latitude" />
+        </div>
+
+        <div class="input-group">
+            <label>Longitude</label>
+            <input type="number" [(ngModel)]="longitude" placeholder="Enter longitude" />
+        </div>
+    </div>
     <div *ngIf="expanded" class="content">
         <h4>Weather Report</h4>
   <div class="weather-card" *ngFor="let day of report">

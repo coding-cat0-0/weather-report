@@ -6,13 +6,13 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-disaster-alerts',
   standalone: true,
-  imports: [CommonModule, FormsModule,HttpClientModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './disaster-alerts.component.html',
   styleUrl: './disaster-alerts.component.css'
 })
 export class DisasterAlertsComponent {
 
-disasterApi ='http://localhost:9000/get_disaster';
+disasterApi ='http://localhost:9000/get_disasters';
 earthquakes:any[]=[];
 disasters:any[]=[];
 summary:string='';

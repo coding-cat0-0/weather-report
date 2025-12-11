@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  /* Host height should follow content so this block doesn't push others off-screen */
   height: auto;
   padding-top: 0;
 }
@@ -12,7 +11,7 @@
   background: rgba(70, 70, 70, 0.22);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  padding: 1.5rem 2rem;
+  padding: 1rem 1.5rem;
   border-radius: 30px;
   border: 1px solid rgba(170, 170, 170, 0.3);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
@@ -139,4 +138,67 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+.input-section {
+  margin-top: 25px;        
+  display: flex;
+  gap: 15px;             
+}
+
+.input-group input {
+  margin-left: 5px;
+  padding: 10px 12px;   
+  border-radius: 10px;
+}
+
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+/* Glass Input */
+.input-group input {
+  padding: 12px 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  color: white;
+  font-size: 15px;
+  outline: none;
+  transition: 0.2s ease-in-out;
+}
+
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Button */
+.button-container button {
+  margin-top: -60px;
+  padding: 10px 25px;
+  background: #2979ff;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.button-container button:hover {
+  background: #1a5edb;
+}
+input[type=number] {
+  appearance: textfield;        /* Standard */
+  -moz-appearance: textfield;   /* Firefox */
+}
+
+/* Remove arrows for Chrome, Edge, Safari */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }

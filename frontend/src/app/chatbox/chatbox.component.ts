@@ -7,7 +7,7 @@ import { CommonModule, NgClass } from '@angular/common';
 @Component({
   selector: 'app-chatbox',
   standalone: true,
-  imports: [FormsModule, HttpClientModule, MatSnackBarModule, NgClass, CommonModule],
+  imports: [FormsModule, MatSnackBarModule, NgClass, CommonModule],
   templateUrl: './chatbox.component.html',
   styleUrl: './chatbox.component.css'
 })
