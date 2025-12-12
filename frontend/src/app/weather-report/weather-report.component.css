@@ -3,9 +3,7 @@
   position: relative;
   width: 100%;
   padding-top: 0;
-  min-height: 100vh;
   z-index: 1;
-  padding-top: 120px;
 }
 
 /* Glassy Header */
@@ -24,11 +22,13 @@ header {
   justify-content: space-between;
   align-items: center;
 
-  height: 102px; /* <- fixed height = no more accidental spacing */
-  padding: 0 2rem; /* horizontal only */
+  height: 102px;
+  /* <- fixed height = no more accidental spacing */
+  padding: 0 2rem;
+  /* horizontal only */
   box-sizing: border-box;
 
-  border-bottom: 1px solid rgba(255,255,255,0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 header h1 {
@@ -105,13 +105,17 @@ nav ul li a:hover .arrow {
 }
 
 .page-container {
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  margin-bottom: 40px;
+  min-height: 100vh;
+  height: auto;
+  padding-bottom: 60px;
 }
 
 
+.weather-dashboard {
+  align-items: stretch;
+    display: flex;
+  align-items: stretch;
+}
 
 .content-wrapper {
   padding-left: 0 !important;
@@ -119,6 +123,7 @@ nav ul li a:hover .arrow {
   justify-content: center !important;
   gap: 25px !important;
   /* spacing between left/right columns */
+  margin-top: 110px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -127,8 +132,8 @@ nav ul li a:hover .arrow {
 
 
 .left-column {
-  margin-left: 40px;
-  margin-top: 80px;
+  padding-left: 40px;
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -139,6 +144,8 @@ nav ul li a:hover .arrow {
   display: flex;
   flex-direction: column;
   flex: 1;
+  margin-top: 60px;
+  align-self: flex-start;
 }
 
 .animate-block {
@@ -156,9 +163,10 @@ nav ul li a:hover .arrow {
 }
 
 .third-block {
+  position: sticky;
   margin-top: 0;
   margin-right: 0;
-  margin-bottom: 90px !important;
+  bottom: 20px;
 }
 
 
