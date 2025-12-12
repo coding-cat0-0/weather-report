@@ -7,8 +7,8 @@
 
 .background-image {
   background-image: url("assets/bg.jpg");
-  background-size: 100%;
-  background-position: top-center;
+  background-size: cover;
+  background-position: top center;
   background-repeat: no-repeat;
   position: fixed;
   top: 0;
@@ -16,17 +16,36 @@
   width: 100vw;
   height: 100vh;
   z-index: -2;
-  overflow: hidden;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05); /* subtle transparent track */
+  backdrop-filter: blur(4px);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25); /* soft frosted thumb */
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35); /* slightly brighter on hover */
 }
 
 html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
+
   overflow: hidden;
   /*font-family: 'Open Sauce Two', sans-serif !important;*/
 }
+
 * {
   font-family: 'Open Sauce Two', sans-serif !important;
 }

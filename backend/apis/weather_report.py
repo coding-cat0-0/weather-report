@@ -117,10 +117,10 @@ async def get_disasters(
 # Calling external API's
 async def get_weather_report(lat: float, long: float):
     url = (
-        "https://api.openweathermap.org/data/3.0/onecall"
-        f"?lat={lat}&lon={long}"
-        "&exclude=minutely,hourly,alerts"  
-        f"&appid={API_KEY}&units=metric"
+        "https://api.open-meteo.com/v1/forecast"
+        f"?latitude={lat}&longitude={long}"
+        "&daily=temperature_2m_max,temperature_2m_min,weathercode"
+        "&timezone=auto"
     )
 
     async with httpx.AsyncClient(timeout=30.0) as client:
@@ -130,9 +130,8 @@ async def get_weather_report(lat: float, long: float):
         if "daily" not in data:
             return {"error": "Daily forecast not available", "raw": data}
 
-        data["daily"] = data["daily"][:7]
-
         return data
+
 
 
 
@@ -171,42 +170,25 @@ def parse_nasa_event(event):
         "coordinates": event["geometry"][0]["coordinates"],
         "date": event["geometry"][0]["date"]
     }
-     
+
 def parse_weather_report(data):
+    if not data or "daily" not in data:
+        return {"error": "Invalid weather data", "raw": data}
 
-    # If API failed or returned no data
-    if not data:
-        return {
-            "error": "Weather API returned no data.",
-            "raw_response": data
-        }
+    daily = data["daily"]
 
-    # If the weather API does not include daily data
-    if "daily" not in data:
-        return {
-            "error": "'daily' data missing in weather API response.",
-            "raw_response": data
-        }
+    result = []
 
-    daily_forecast = []
-
-    for day in data["daily"]:
-        daily_forecast.append({
-            "date": day.get("dt"),
-            "temperature_day": day.get("temp", {}).get("day"),
-            "temperature_night": day.get("temp", {}).get("night"),
-            "min_temp": day.get("temp", {}).get("min"),
-            "max_temp": day.get("temp", {}).get("max"),
-            "humidity": day.get("humidity"),
-            "wind_speed": day.get("wind_speed"),
-            "clouds": day.get("clouds"),
-            "description": day.get("weather", [{}])[0].get("description"),
-            "icon": day.get("weather", [{}])[0].get("icon")
+    for i in range(len(daily["time"])):
+        result.append({
+            "date": daily["time"][i],
+            "max_temp": daily["temperature_2m_max"][i],
+            "min_temp": daily["temperature_2m_min"][i],
+            "weather_code": daily["weathercode"][i]
         })
 
-    return daily_forecast
+    return result
 
-    
     
 # Open AI summary
 async def get_ai_summary(weather : Optional[Any]=None, disaster : Optional[Any] = None

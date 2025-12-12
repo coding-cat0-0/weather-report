@@ -2,6 +2,7 @@
   display: block;
   position: relative;
   width: 100%;
+  padding-top: 0;
   min-height: 100vh;
   z-index: 1;
   padding-top: 120px;
@@ -10,30 +11,24 @@
 /* Glassy Header */
 header {
   background: rgba(70, 70, 70, 0.22);
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  padding: 1.5rem 2rem !important;
-  border-radius: 0 !important;
-  border: 1px solid rgba(0, 119, 190, 0.4) !important;
-  border-left: none !important;
-  border-right: none !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
-  margin: 0 !important;
-  margin-top: 0 !important;
-  transition: 0.25s ease-in-out !important;
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  z-index: 100 !important;
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 102px; /* <- fixed height = no more accidental spacing */
+  padding: 0 2rem; /* horizontal only */
+  box-sizing: border-box;
+
+  border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
 header h1 {
@@ -61,7 +56,6 @@ header nav {
   position: static !important;
   display: block !important;
   width: auto !important;
-  visibility: visible !important;
   opacity: 1 !important;
 }
 
@@ -110,37 +104,41 @@ nav ul li a:hover .arrow {
   transform: rotate(180deg);
 }
 
-
-.weather-dashbord {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 70px 60px 40px;
+.page-container {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 40px;
 }
 
+
+
 .content-wrapper {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  justify-content: center !important;
+  gap: 25px !important;
+  /* spacing between left/right columns */
   display: flex;
   flex-direction: row;
-  gap: 20px;
   align-items: flex-start;
 }
 
-.header-section {
-  width: 100%;
-  margin-bottom: 20px;
-}
+
 
 .left-column {
+  margin-left: 40px;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
-  flex: 3;
+  flex: 1;
   gap: 24px;
 }
 
 .right-column {
   display: flex;
   flex-direction: column;
-  flex: 2;
+  flex: 1;
 }
 
 .animate-block {
@@ -150,20 +148,19 @@ nav ul li a:hover .arrow {
 }
 
 .first-block {
-  margin-top: -13px;
-  width: 100%;
+  margin-top: 0;
 }
 
 .second-block {
-  width: 100%;
-  margin-bottom: 350px;
+  margin-bottom: 0;
 }
 
 .third-block {
-  margin-top: -50px;
-  width: 100%;
-  margin-right: 60px;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 90px !important;
 }
+
 
 .animate-block:hover {
   transform: scale(1.05);

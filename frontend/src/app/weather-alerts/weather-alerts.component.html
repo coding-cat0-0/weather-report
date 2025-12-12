@@ -23,11 +23,11 @@
     <div *ngIf="expanded" class="content">
         <h4>Weather Report</h4>
   <div class="weather-card" *ngFor="let day of report">
-    <p><strong>Date:</strong> {{ day.date | date:'fullDate'}}</p>
-    <p><strong>Temp:</strong> {{ day.temperature }}°C</p>
-    <p><strong>Humidity:</strong> {{ day.humidity }}%</p>
-    <p><strong>Wind:</strong> {{ day.wind_speed }} m/s</p>
-    <p><strong>Condition:</strong> {{ day.description }}</p>
+    <p><strong>Date:</strong> {{ day.date | date:'fullDate' }}</p>
+    <p><strong>Max Temp:</strong> {{ day.max_temp }}°C</p>
+    <p><strong>Min Temp:</strong> {{ day.min_temp }}°C</p>
+    <p><strong>Condition Code:</strong> {{ day.weather_code }}</p>
+
   </div>
         <h4>Summary</h4>
         <p>{{summary}}</p>

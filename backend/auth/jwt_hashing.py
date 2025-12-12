@@ -8,11 +8,11 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlmodel import Session, select
 from passlib.context import CryptContext
 from database.db import get_session
+import bcrypt
 
-pwd = CryptContext(
-    schemes=["argon2"],
-    deprecated="auto"
-)
+
+pwd = CryptContext(schemes = ['bcrypt'], deprecated = 'auto')
+
 
 def hash_password(password: str):
     return pwd.hash(password.strip())
